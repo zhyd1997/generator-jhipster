@@ -38,7 +38,7 @@ on:
       - '*'
 jobs:
   build-matrix:
-    runs-on: ubuntu-20.04
+    runs-on: windows-latest
     outputs:
       matrix: ${{ steps.build.outputs.matrix }}
       client: ${{ steps.build.outputs.client }}
@@ -59,7 +59,7 @@ jobs:
           workflow-samples-file: react
   applications:
     name: ${{ matrix.name }}
-    runs-on: ${{ matrix.os || 'ubuntu-20.04' }}
+    runs-on: ${{ matrix.os || 'windows-latest' }}
     needs: build-matrix
     defaults:
       run:
@@ -228,7 +228,7 @@ jobs:
   check-react:
     permissions:
       contents: none
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     needs: [applications]
     if: always()
     steps:
