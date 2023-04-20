@@ -27,7 +27,9 @@ jobs:
         # npm ci
         # npm link
         mkdir myApp
+        mv ./.github/sample.jdl myApp
         cd myApp
         pwd
+        ls
         # npm link generator-jhipster
         # npx jhipster jdl ../../.github/sample.jdl
