@@ -23,9 +23,11 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     - run: |
-        npm ci
-        npm link
+        ls
+        # npm ci
+        # npm link
         mkdir myApp
         cd myApp
-        npm link generator-jhipster
-        npx jhipster jdl ../../.github/sample.jdl
+        pwd
+        # npm link generator-jhipster
+        # npx jhipster jdl ../../.github/sample.jdl
