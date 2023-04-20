@@ -1,16 +1,12 @@
 application {
   config {
-    baseName gateway
-    reactive true
-    packageName com.okta.developer.gateway
-    applicationType gateway
-    authenticationType oauth2
-    buildTool gradle
+    baseName myApp,
+    applicationType gateway,
+    packageName com.myapp,
+    authenticationType jwt,
+    prodDatabaseType mysql,
     clientFramework react
-    prodDatabaseType postgresql
-    serviceDiscoveryType eureka
-    testFrameworks [cypress]
   }
-  entities Blog, Post, Tag, Product
+  entities *
 }
 
