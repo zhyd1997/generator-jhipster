@@ -33,4 +33,4 @@ jobs:
         # pwd
         # ls
         npm link generator-jhipster
-        npx jhipster jdl sample.jdl
+        jhipster jdl sample.jdl
