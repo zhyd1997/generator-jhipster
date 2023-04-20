@@ -285,7 +285,6 @@ export default class extends BaseGenerator {
         });
       },
       addGeneratorJHipsterDependency() {
-        return;
         if (this.jhipsterConfig[LOCAL_BLUEPRINT_OPTION]) return;
         const { packagejs } = this.application;
         if (this.jhipsterConfig.dynamic) {
