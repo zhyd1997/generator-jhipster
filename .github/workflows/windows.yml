@@ -33,5 +33,5 @@ jobs:
         # pwd
         # ls
         npm link generator-jhipster
-        jhipster jdl sample.jdl
+        jhipster jdl --inline "application { config { baseName jhapp, testFrameworks [cypress] }}"
         cat package.json

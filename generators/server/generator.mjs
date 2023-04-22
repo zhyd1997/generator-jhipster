@@ -831,9 +831,6 @@ export default class JHipsterServerGenerator extends BaseApplicationGenerator {
     return this.asEndTaskGroup({
       end({ application }) {
         this.log(chalk.yellow.bold('application'))
-        if (application.testFrameworks.find('cypress')) {
-          this.log.ok('Found Cypress')
-        }
         this.log.ok('Spring Boot application generated successfully.');
 
         let executable = 'mvnw';
@@ -843,6 +840,10 @@ export default class JHipsterServerGenerator extends BaseApplicationGenerator {
         let logMsgComment = '';
         if (os.platform() === 'win32') {
           logMsgComment = ` (${chalk.yellow.bold(executable)} if using Windows Command Prompt)`;
+          if (application.testFrameworks.includes('cypress')) {
+            this.log.ok('Found Cypress!')
+            logMsgComment.concat()
+          }
         }
         this.logger.log(chalk.green(`  Run your Spring Boot application:\n  ${chalk.yellow.bold(`./${executable}`)}${logMsgComment}`));
       },
