@@ -830,6 +830,7 @@ export default class JHipsterServerGenerator extends BaseApplicationGenerator {
   get end() {
     return this.asEndTaskGroup({
       end({ application }) {
+        this.log(application)
         this.log.ok('Spring Boot application generated successfully.');
 
         let executable = 'mvnw';
