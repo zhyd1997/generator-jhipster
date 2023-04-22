@@ -17,6 +17,8 @@
  * limitations under the License.
  */
 import _ from 'lodash';
+import os from 'os';
+import chalk from 'chalk';
 
 import { stringHashCode, createFaker } from '../base/support/index.mjs';
 import BaseApplicationGenerator from '../base-application/index.mjs';
@@ -270,6 +272,26 @@ export default class CypressGenerator extends BaseApplicationGenerator {
 
   get [BaseApplicationGenerator.POST_WRITING]() {
     return this.delegateTasksToBlueprint(() => this.postWriting);
+  }
+
+  get end() {
+    return this.asEndTaskGroup({
+      end() {
+        this.log.ok('Cypress setup successfully.');
+
+        if (os.platform() === 'win32') {
+          this.logger.log(
+            chalk.green(`  if you want to cypress locally on Windows platform, restart your IDE after set
+    ${chalk.yellow.bold('CYPRESS_ENABLE_RECORD')} in the Environment Variables
+  `)
+          );
+        }
+      },
+    });
+  }
+
+  get [BaseApplicationGenerator.END]() {
+    return this.asEndTaskGroup(this.delegateTasksToBlueprint(() => this.end));
   }
 
   generateTestEntity(references, index = 'random') {

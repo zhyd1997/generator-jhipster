@@ -7,7 +7,6 @@ on: [push]
 
 jobs:
   build:
-
     runs-on: windows-latest
 
     strategy:
@@ -16,22 +15,22 @@ jobs:
         # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
-        cache: 'npm'
-    - run: |
-        # ls
-        npm ci
-        npm link
-        cd ..
-        mkdir myApp
-        mv */.github/sample.jdl myApp
-        cd myApp
-        # pwd
-        # ls
-        npm link generator-jhipster
-        jhipster jdl --inline "application { config { baseName jhapp, testFrameworks [cypress] }}"
-        cat package.json
+      - uses: actions/checkout@v3
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+          cache: 'npm'
+      - run: |
+          # ls
+          npm ci
+          npm link
+          cd ..
+          mkdir myApp
+          mv */.github/sample.jdl myApp
+          cd myApp
+          # pwd
+          # ls
+          npm link generator-jhipster
+          jhipster jdl --inline "application { config { baseName jhapp, testFrameworks [cypress] }}"
+          cat package.json
