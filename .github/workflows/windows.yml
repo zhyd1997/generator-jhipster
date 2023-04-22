@@ -34,3 +34,4 @@ jobs:
         # ls
         npm link generator-jhipster
         jhipster jdl sample.jdl
+        cat package.json
