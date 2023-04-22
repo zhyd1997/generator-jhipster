@@ -830,7 +830,10 @@ export default class JHipsterServerGenerator extends BaseApplicationGenerator {
   get end() {
     return this.asEndTaskGroup({
       end({ application }) {
-        this.log(application)
+        this.log(chalk.yellow.bold('application'))
+        if (application.testFrameworks.find('cypress')) {
+          this.log.ok('Found Cypress')
+        }
         this.log.ok('Spring Boot application generated successfully.');
 
         let executable = 'mvnw';
