@@ -19,7 +19,7 @@
 import chalk from 'chalk';
 import fs from 'fs';
 import _ from 'lodash';
-import path, { dirname, join } from 'path';
+import path, { dirname, join, sep } from 'path';
 import pluralize from 'pluralize';
 import { fileURLToPath } from 'url';
 import { inspect } from 'util';
